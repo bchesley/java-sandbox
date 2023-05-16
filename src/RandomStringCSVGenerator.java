@@ -6,32 +6,44 @@ import java.util.Random;
 public class RandomStringCSVGenerator {
 
     public static void main(String[] args) {
-        if (args.length < 2) {
-            System.out.println("Please provide the number of rows and the output file name as command-line arguments.");
+        if (args.length < 3) {
+            System.out.println("Please provide the number of rows, columns count, and the output file name as command-line arguments.");
             return;
         }
 
         int numRows = Integer.parseInt(args[0]);
-        String outputFileName = args[1];
+        int numColumns = Integer.parseInt(args[1]);
+        String outputFileName = args[2];
 
-        generateCSV(numRows, outputFileName);
+        generateCSV(numRows, numColumns, outputFileName);
 
         System.out.println("CSV file generated successfully.");
     }
 
-    private static void generateCSV(int numRows, String outputFileName) {
+    private static void generateCSV(int numRows, int numColumns, String outputFileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
             Random random = new Random();
 
             for (int i = 0; i < numRows; i++) {
-                String randomString = generateRandomString(random, 10); // Adjust the string length as needed
-                writer.write(randomString);
+                String[] row = generateRandomRow(random, numColumns);
+                String rowString = String.join(",", row);
+                writer.write(rowString);
                 writer.newLine();
             }
         } catch (IOException e) {
             System.out.println("An error occurred while generating the CSV file.");
             e.printStackTrace();
         }
+    }
+
+    private static String[] generateRandomRow(Random random, int numColumns) {
+        String[] row = new String[numColumns];
+
+        for (int i = 0; i < numColumns; i++) {
+            row[i] = generateRandomString(random, 10); // Adjust the string length as needed
+        }
+
+        return row;
     }
 
     private static String generateRandomString(Random random, int length) {
