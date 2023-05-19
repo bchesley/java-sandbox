@@ -4,7 +4,7 @@ import org.apache.commons.validator.routines.UrlValidator;
 public class security {
     public static void main(String[] args) throws MalformedURLException {
         security s = new security();
-        System.out.print(s.isValidURL("https:/www.example.com"));
+        System.out.print(s.isValidURL("https://www.example.com"));
     }
 
     boolean isValidURL(String url) throws MalformedURLException {
