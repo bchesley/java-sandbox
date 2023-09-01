@@ -78,7 +78,7 @@ mvn clean install
 
 ## Monitoring and Logging
 
-[Explain how to monitor the microservice's health, performance, and how to access logs. You might mention tools like Prometheus, Grafana, ELK stack, etc.]
+[Explain how to monitor the microservice's health, performance, and how to access logs. You might mention tools like Splunk, Prometheus, Grafana, ELK stack, etc.]
 
 ## Contributing
 
